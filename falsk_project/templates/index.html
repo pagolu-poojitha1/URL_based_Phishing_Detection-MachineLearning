@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A web Page</title>
+</head>
+<body>
+    <style>
+         /* Container to position image and text */
+
+         .body{
+            background-image: url("static/2.png");
+         }
+         .image-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .image-container button{
+            position:absolute;
+            background-color: #39AEA9;
+            font-size: 20px;
+            color: black;
+            display: block;
+            border-radius: 5px 5px 5px 5px;
+            height: 50px;
+            width: 125px;
+            bottom: 420px;
+            left: 649px;
+        }
+        /* Style for the image */
+        .image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        /* Style for the overlay text */
+        .image-container .overlay-text {
+            position: absolute;
+            top: 105px;
+            left: 475px;
+            padding: 5px;
+            font-size:40px;
+            color: black;
+            font-weight: bold;
+        }
+
+        .image-container .overlay-text-body {
+            position: absolute;
+            top: 170px;
+            left: 420px;
+            background-color: #ECF87F;
+            padding: 5px;
+            font-size:30px;
+            color: red;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-display: fallback;
+        }
+        
+    </style>
+    <div class="image-container">
+        <img src="static/2.png" alt="My Image">
+        <div class="overlay-text">PHISHING DETECTION</div>
+        <div class="overlay-text-body">
+            !!Be aware of what's happening around you!!
+        </div>
+        <a href="/predict">
+        <button>Let's Check!</button></a>
+    </div>
+</body>
+</html>

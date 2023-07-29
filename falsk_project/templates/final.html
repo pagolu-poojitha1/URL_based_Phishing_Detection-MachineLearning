@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Phishing Detection</title>
+</head>
+<body>
+    <style>
+        body {
+            background-image: url("static/1.png");
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .url-input {
+            display: flex;
+            align-items: center;
+        }
+
+        .url-input input[type="text"] {
+            flex: 1;
+            padding: 5px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px 5px 5px 5px;
+            margin-bottom: 10px;
+        }
+
+        .url-input button {
+            padding: 15px;
+            background-color: #88514C;
+            color: #fff;
+            border: none;
+            border-radius: 5px 5px 5px 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .safe {
+            color: #007BFF;
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .phishing {
+            color: #FF0000;
+        }
+
+        #myModal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        #modal-content {
+            background-color: #C3E0E5;
+            padding: 20px;
+            margin: auto;
+            width: 30%;
+            text-align: center;
+            border-radius: 10px;
+            display: flex; /* Use flex layout */
+            flex-direction: column; /* Stack the items vertically */
+            align-items: center; /* Center items horizontally */
+        }
+
+        #closeBtn {
+            background-color: #007BFF;
+            border: none;
+            color: white;
+            padding: 10px;
+            display: block;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+    </style>
+    <h1>URL Phishing Detection</h1>
+    <form class="url-input" action="/y_predict" method="post">
+        <input type="text" name="url" placeholder="Enter URL">
+        <button type="submit">Check</button>
+    </form>
+    <div id="myModal">
+        <div id="modal-content">
+            <!-- The prediction result will be displayed here -->
+            <p id="prediction_result"></p>
+            <button id="closeBtn" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+    <script>
+        // Function to open the modal and display the prediction result
+        function openModal(predictionText) {
+            const modal = document.getElementById("myModal");
+            const predictionResult = document.getElementById("prediction_result");
+            if (predictionText !== '') {
+                predictionResult.innerHTML = predictionText;
+                modal.style.display = "block";
+            }
+        }
+
+        // Function to close the modal
+        function closeModal() {
+            const modal = document.getElementById("myModal");
+            modal.style.display = "none";
+        }
+
+        // Get the prediction text from Flask and open the modal
+        const predictionText = "{{ prediction_text }}";
+        openModal(predictionText);
+    </script>
+</body>
+</html>
